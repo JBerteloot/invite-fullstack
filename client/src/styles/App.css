@@ -1,0 +1,132 @@
+html {box-sizing:border-box;}
+*, *::before, *::after {box-sizing:inherit;}
+
+body {
+  width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: rgb(238, 238, 238);
+}
+
+#container {
+  position: relative;
+}
+
+.inventory {
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+  width: 100%;
+  background-color: rgb(238, 238, 238);
+  position: absolute;
+  margin-top: -50px;
+}
+
+.inventory button {
+  width: 50%;
+  height: 50px;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  font-size: 14px;
+}
+
+.invite {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  margin-top: 25%;
+  background-color: rgb(232, 232, 232);
+}
+
+.invite .user {
+  width: auto;
+}
+
+
+.photo {
+  width: 300px;
+  height: 300px;
+  border-bottom:solid .5px rgb(219, 218, 218);
+}
+
+img {
+  width: 200px;
+  border-radius: 50%;
+  margin-top: 17%;
+  margin-left: 17%;
+}
+
+.details {
+  border-bottom: solid .5px rgb(219, 218, 218);
+}
+
+.name, .phone, .email {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.name h6, .phone h6, .email h6 {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 7px;
+  margin: 0px;
+}
+
+.name p {
+  text-transform: capitalize;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.yes, .no {
+  width: 40px;
+  height: 25px;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.yes {
+  background: green;
+  font-size: 20px;
+}
+
+.no {
+  background: red;
+}
+
+.going, .notgoing {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.notgoing {
+  border: solid red;
+}
+
+.going {
+  border: solid green;
+}
+
+.going .user {
+  border: solid .5px rgb(219, 218, 218);
+  margin: 20px;
+}
+
+.notgoing .user {
+  border: solid .5px rgb(219, 218, 218);
+  margin: 20px;
+}
