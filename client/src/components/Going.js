@@ -1,22 +1,23 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import User from "./User"
 import {useSelector} from "react-redux"
-import {getGoing} from "../actions/actions"
+import { Link} from "react-router-dom"
 
 
 export default props => {
   const going = useSelector(appState => appState.going)
 
-  useEffect (() => {
-    getGoing()
-  }, []) 
-
-
   return (
-    <div className="going">
-      {going.map((user, i) => (
-        <User pers={user} />
-      ))}
+    <div id="going">
+      <div className="back">
+        <Link to="/">Back to Invite</Link>
+        <h1>Going</h1>
+      </div>
+      <div className="going" >
+        {going.map((user, i) => (
+        < User key={"user" + i} pers={user} />
+        ))}
+      </div>
     </div>
   )
 }

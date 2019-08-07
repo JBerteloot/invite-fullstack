@@ -1,43 +1,49 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import User from "./User"
 import {useSelector} from "react-redux"
 import {generate, going, notGoing} from "../actions/actions"
+import { Link} from "react-router-dom"
 
 
 export default props => {
-  const users = useSelector(appState => appState.users)
+  const user = useSelector(appState => appState.new)
+  const goingUsers = useSelector(appState => appState.going)
+  const notGoingUsers = useSelector(appState => appState.notGoing)
+  const [disabled, setDisabled] = useState(false)
 
   useEffect (() => {
-    generate()
-  }, []) 
+    generate(user.id)
+    setDisabled(false)
+  }, [user.id]) 
 
-  function yes(props) {
-    console.log(users[0])
-    going(users[0])
+  function yes() {
+    going(user)
+    setDisabled(true)
   }
 
-  function no(props) {
-    notGoing(users[0])
+  function no() {
+    notGoing(user)
+    setDisabled(true)
   }
-
-  const cGoing = going.length
-  const cNotGoing = notGoing.length
 
   return (
     <div className="invite">
         <div className="inventory">
-          <button>Going: {cGoing}</button>
-          <button>Not Going: {cNotGoing}</button>
+        <Link to="/going"><button>Going: {goingUsers.length}</button></Link>
+        <Link to="/notgoing"><button>Not Going: {notGoingUsers.length}</button></Link>
         </div>
-        
-        {users.map((user, i) => (
-          <User pers={user} />
-        ))}
-      
-      <div className="buttons">
-        <button className="no" type="button" onClick={no}>&#10005;</button>
-        <button className="yes" type="button" onClick={yes}>&#10003;</button>
-      </div>
+          <User pers={user}/>
+        <div className="buttons">
+          <button className="no" type="button"  onClick={no}>&#10005;</button>
+          <button className="yes" type="button" onClick={yes}>&#10003;</button>
+        </div>
     </div>
   )
 }
+
+
+/*    
+  <Route exact path="/" component={MyAlbums} />
+  <Route exact path="/Album/:id" component={Album} />
+  <Route path="/Photo/:id" component={Photo} />
+*/
